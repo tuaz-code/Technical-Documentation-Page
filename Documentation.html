@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript XML Documentation</title>
+    <link rel="stylesheet" href="/Documentation.css">
+</head>
+
+<body>
+    <div class="container">
+
+
+        <div class="first-empty">
+            <nav id="navbar">
+                <header id="main-header">JSX Documentation</header>
+                <ul>
+                    <li><a class="nav-link" href="#Introducing_JSX">Introducing JSX</a></li>
+                    <li><a href="#Why_JSX" class="nav-link">Why JSX</a></li>
+                    <li><a href="#Embedding_Expressions_in_JSX" class="nav-link">Embedding Expressions in JSX</a></li>
+                    <li><a href="#JSX_is_an_Expression_Too" class="nav-link">JSX is an Expression Too</a></li>
+                    <li><a href="#Specifying_Attributes_with_JSX" class="nav-link">Specifying Attributes with JSX</a>
+                    </li>
+                    <li><a href="#Specifying_Children_with_JSX" class="nav-link">Specifying Children with JSX</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="empty">
+            <main id="main-doc">
+
+                <section class="main-section" id="Introducing_JSX">
+                    <header>Introducing JSX</header>
+                    <p>Consider this variable declaration:</p>
+                    <code>
+                        const element = &lth1> Hello, world! &lt/h1>;
+                    </code>
+                    <ul>
+                        <li>This funny tag syntax is neither a string nor HTML.</li>
+                        <li>It is called JSX, and it is a syntax extension to JavaScript. We recommend using it with
+                            React to describe what the UI should look like. JSX may remind you of a template language,
+                            but it comes with the full power of JavaScript.</li>
+                        <li>JSX produces React “elements”. We will explore rendering them to the DOM in the next
+                            section. Below, you can find the basics of JSX necessary to get you started.</li>
+                    </ul>
+                </section>
+                <section class="main-section" id="Why_JSX">
+                    <header>Why JSX</header>
+                    <p>React embraces the fact that rendering logic is inherently coupled with other UI logic: how
+                        events are handled, how the state changes over time, and how the data is prepared for display.
+                    </p>
+                    <p>Instead of artificially separating technologies by putting markup and logic in separate files,
+                        React separates concerns with loosely coupled units called “components” that contain both. We
+                        will come back to components in a further section, but if you’re not yet comfortable putting
+                        markup in JS, this talk might convince you otherwise.</p>
+                    <p>React doesn’t require using JSX, but most people find it helpful as a visual aid when working
+                        with UI inside the JavaScript code. It also allows React to show more useful error and warning
+                        messages.</p>
+                    <p>With that out of the way, let’s get started!</p>
+                </section>
+                <section class="main-section" id="Embedding_Expressions_in_JSX">
+                    <header>Embedding Expressions in JSX</header>
+                    <p>In the example below, we declare a variable called name and then use it inside JSX by wrapping it
+                        in curly braces:</p>
+                    <code>
+                        const name = 'Josh Perez';<br>
+                        const element = &lth1>Hello, {name}&lt/h1>;<br>
+
+                        ReactDOM.render(
+                        element,
+                        document.getElementById('root')
+                        );
+                    </code>
+                    <p>You can put any valid JavaScript expression inside the curly braces in JSX. For example, 2 + 2,
+                        user.firstName, or formatName(user) are all valid JavaScript expressions.</p>
+                    <p>In the example below, we embed the result of calling a JavaScript function, formatName(user),
+                        into an &lth1> element.</p>
+                    <code>
+                        function formatName(user) <br>{
+                        return user.firstName + ' ' + user.lastName;
+                        } <br>
+
+                        const user = {<br>
+                        firstName: 'Harper',<br>
+                        lastName: 'Perez'<br>
+                        };<br> <br>
+
+                        const element = (<br>
+                        &lth1> <br>
+                        Hello, {formatName(user)}! <br>
+                        &lt/h1>
+                        ); <br> <br>
+
+                        ReactDOM.render( <br>
+                        element, <br>
+                        document. getElementById('root') <br>
+                        );
+                    </code>
+                    <p>We split JSX over multiple lines for readability. While it isn’t required, when doing this, we
+                        also recommend wrapping it in parentheses to avoid the pitfalls of automatic semicolon
+                        insertion.</p>
+                </section>
+                <section class="main-section" id="JSX_is_an_Expression_Too">
+                    <header>JSX is an Expression Too</header>
+                    <ul>
+                        <li>After compilation, JSX expressions become regular JavaScript function calls and evaluate to
+                            JavaScript objects.</li>
+                        <li>This means that you can use JSX inside of if statements and for loops, assign it to
+                            variables, accept it as arguments, and return it from functions:</li>
+                    </ul>
+                    <code>
+                        function getGreeting(user) { <br>
+                        if (user) { <br>
+                        return &lth1>Hello, {formatName(user)}!&lt/h1>;<br>
+                        } <br>
+                        return &lth1>Hello, Stranger.&lt/h1>; <br>
+                        }
+                    </code>
+                </section>
+                <section class="main-section" id="Specifying_Attributes_with_JSX">
+                    <header>Specifying Attributes with JSX</header>
+                    <p>You may use quotes to specify string literals as attributes:</p>
+                    <code>
+                        const element = &ltdiv tabIndex="0">&lt/div>;
+                    </code>
+                    <ul>
+                        <li>You may also use curly braces to embed a JavaScript expression in an attribute:</li>
+                    </ul>
+                    <code>
+                        const element = &ltimg src={user.avatarUrl}>&lt/img>;
+                    </code>
+                </section>
+                <section class="main-section" id="Specifying_Children_with_JSX">
+                    <header>Specifying Children with JSX</header>
+                    <p>If a tag is empty, you may close it immediately with />, like XML:</p>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script> -->
+</body>
+
+</html>
